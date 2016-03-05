@@ -5,6 +5,7 @@ var fs = require("fs");
 var mime = require("mime");
 var Util = require("./util");
 var Url = require("url");
+var apiThree = require("./api/v3.0.0");
 
 /** section: github
  * class Client
@@ -180,7 +181,7 @@ var Client = module.exports = function(config) {
     this.debug = Util.isTrue(config.debug);
 
     this.version = config.version;
-    var cls = require("./api/v" + this.version);
+    var cls = apiThree;
     this[this.version] = new cls(this);
 
     var pathPrefix = "";
